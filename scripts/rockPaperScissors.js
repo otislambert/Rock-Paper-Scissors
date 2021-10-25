@@ -2,14 +2,7 @@ const options = ["rock", "paper", "scissors"];
 
 let userWins = 0;
 let computerWins = 0;
-let plays = 0;
-
-do {
-	plays += 1;
-	playRound();
-	determineWinner();
-}
-while (plays <= 5);
+let plays = 1;
 
 function userPlay() {
 	let thePlay = prompt("Choose from 'rock', 'paper', or 'scissors': ");
@@ -25,6 +18,7 @@ function computerPlay() {
 function playRound() {
 	let userAnswer = userPlay();
 	let computerAnswer = computerPlay();
+	console.log(`You chose: ${userAnswer}, the computer chose: ${computerAnswer}`);
 	if (comparator(userAnswer) == computerAnswer) {
 		console.log("You Win");
 		userWins += 1;
@@ -54,13 +48,23 @@ function comparator(answer) {
 }
 
 function determineWinner() {
-	if (computerWins > userWins && plays >= 5) {
+	if (computerWins > userWins) {
 		alert("Computer Wins, refresh page to try again.")
 	}
-	else if (userWins < computerWins && plays >= 5) {
+	else if (userWins < computerWins) {
 		alert("You win, refresh the page if you would like to play again.")
 	}
-	else if (plays >= 5) {
+	else {
 		alert("It looks like a tie game. Refresh the page.")
 	}
 }
+
+function game() {
+	while (plays < 6) {
+		playRound()
+		plays += 1;
+	}
+	determineWinner();
+}
+
+game();
