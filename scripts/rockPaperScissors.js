@@ -17,14 +17,15 @@ function playRound() {
 	console.log(`You chose: ${userAnswer}, the computer chose: ${computerAnswer}`);
 	if (comparator(userAnswer) == computerAnswer) {
 		console.log("You Win");
-		return true
+		return "User Wins";
 	}
 	else if (comparator(computerAnswer) == userAnswer) {
 		console.log("Computer Wins");
-		return false
+		return "Comp Wins";
 	}
 	else {
 		console.log("Tie Game");
+		return "Tie";
 	}
 }
 
@@ -46,29 +47,34 @@ function game() {
 	let userWins = 0;
 	let computerWins = 0;
 	let plays = 0;
-	while (plays < 6) {
-		playRound()
+	while (plays < 5) {
+		let result = playRound();
 		plays += 1;
-		if (playRound()) {
+		if (result == "User Wins") {
 			userWins += 1;
+			console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
+
 		}
-		else {
+		if (result == "Comp Wins") {
 			computerWins += 1;
+			console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
 		}
-		console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
+		if (result == "Tie") {
+			console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
+		}
 	}
 	determineWinner(userWins, computerWins)
 }
 
 function determineWinner(user, computer) {
 	if (user > computer) {
-		alert("You win. Refresh to play again.")
+		console.log("You win. Refresh to play again.")
 	}
 	else if (computer > user) {
-		alert("Computer Wins. Refresh to play again.")
+		console.log("Computer Wins. Refresh to play again.")
 	}
 	else {
-		alert("Tie Game. Refresh to play again.")
+		console.log("Tie Game. Refresh to play again.")
 	}
 }
 game();
