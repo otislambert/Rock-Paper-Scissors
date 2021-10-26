@@ -1,16 +1,5 @@
 const options = ["rock", "paper", "scissors"];
 
-let userWins = 0;
-let computerWins = 0;
-let plays = 0;
-
-do {
-	plays += 1;
-	playRound();
-	determineWinner();
-}
-while (plays <= 5);
-
 function userPlay() {
 	let thePlay = prompt("Choose from 'rock', 'paper', or 'scissors': ");
 	return thePlay.toLowerCase();
@@ -25,18 +14,19 @@ function computerPlay() {
 function playRound() {
 	let userAnswer = userPlay();
 	let computerAnswer = computerPlay();
+	console.log(`You chose: ${userAnswer}, the computer chose: ${computerAnswer}`);
 	if (comparator(userAnswer) == computerAnswer) {
 		console.log("You Win");
-		userWins += 1;
+		return "User Wins";
 	}
 	else if (comparator(computerAnswer) == userAnswer) {
 		console.log("Computer Wins");
-		computerWins += 1;
+		return "Comp Wins";
 	}
 	else {
 		console.log("Tie Game");
+		return "Tie";
 	}
-	console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
 }
 
 function comparator(answer) {
@@ -53,14 +43,38 @@ function comparator(answer) {
 	}
 }
 
-function determineWinner() {
-	if (computerWins > userWins && plays >= 5) {
-		alert("Computer Wins, refresh page to try again.")
+function game() {
+	let userWins = 0;
+	let computerWins = 0;
+	let plays = 0;
+	while (plays < 5) {
+		let result = playRound();
+		plays += 1;
+		if (result == "User Wins") {
+			userWins += 1;
+			console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
+
+		}
+		if (result == "Comp Wins") {
+			computerWins += 1;
+			console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
+		}
+		if (result == "Tie") {
+			console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
+		}
 	}
-	else if (userWins < computerWins && plays >= 5) {
-		alert("You win, refresh the page if you would like to play again.")
+	determineWinner(userWins, computerWins)
+}
+
+function determineWinner(user, computer) {
+	if (user > computer) {
+		console.log("You win. Refresh to play again.")
 	}
-	else if (plays >= 5) {
-		alert("It looks like a tie game. Refresh the page.")
+	else if (computer > user) {
+		console.log("Computer Wins. Refresh to play again.")
+	}
+	else {
+		console.log("Tie Game. Refresh to play again.")
 	}
 }
+game();
