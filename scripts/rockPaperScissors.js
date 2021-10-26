@@ -1,9 +1,5 @@
 const options = ["rock", "paper", "scissors"];
 
-let userWins = 0;
-let computerWins = 0;
-let plays = 1;
-
 function userPlay() {
 	let thePlay = prompt("Choose from 'rock', 'paper', or 'scissors': ");
 	return thePlay.toLowerCase();
@@ -21,16 +17,15 @@ function playRound() {
 	console.log(`You chose: ${userAnswer}, the computer chose: ${computerAnswer}`);
 	if (comparator(userAnswer) == computerAnswer) {
 		console.log("You Win");
-		userWins += 1;
+		return true
 	}
 	else if (comparator(computerAnswer) == userAnswer) {
 		console.log("Computer Wins");
-		computerWins += 1;
+		return false
 	}
 	else {
 		console.log("Tie Game");
 	}
-	console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
 }
 
 function comparator(answer) {
@@ -47,24 +42,33 @@ function comparator(answer) {
 	}
 }
 
-function determineWinner() {
-	if (computerWins > userWins) {
-		alert("Computer Wins, refresh page to try again.")
-	}
-	else if (userWins < computerWins) {
-		alert("You win, refresh the page if you would like to play again.")
-	}
-	else {
-		alert("It looks like a tie game. Refresh the page.")
-	}
-}
-
 function game() {
+	let userWins = 0;
+	let computerWins = 0;
+	let plays = 0;
 	while (plays < 6) {
 		playRound()
 		plays += 1;
+		if (playRound()) {
+			userWins += 1;
+		}
+		else {
+			computerWins += 1;
+		}
+		console.log(`The score is now Computer: ${computerWins}, User: ${userWins}. On round ${plays} out of 5.`)
 	}
-	determineWinner();
+	determineWinner(userWins, computerWins)
 }
 
+function determineWinner(user, computer) {
+	if (user > computer) {
+		alert("You win. Refresh to play again.")
+	}
+	else if (computer > user) {
+		alert("Computer Wins. Refresh to play again.")
+	}
+	else {
+		alert("Tie Game. Refresh to play again.")
+	}
+}
 game();
