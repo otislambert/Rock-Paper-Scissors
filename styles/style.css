@@ -1,0 +1,54 @@
+body {
+	background-color: blanchedalmond;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	font-family: Helvetica, Arial, sans-serif;
+	color: darkolivegreen;
+	font-size: 70px;
+}
+
+#game {
+	margin: 10px auto;
+	width: 30vw;
+	flex-direction: column;
+	gap: 20px;
+}
+
+#status {
+	border: 5px solid rebeccapurple;
+	border-radius: 10px;
+	padding: 20px;
+	width: 100%;
+}
+
+#status-text {
+	font-size: 50px;
+	color: rebeccapurple;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#game-buttons button {
+	background-color: white;
+	color: darkolivegreen;
+	border: 2px solid darkolivegreen;
+	border-radius: 5px;
+	font-size: 30px;
+	transition: .3s;
+}
+
+#game-buttons button:hover {
+	border-color: red;
+	color: red;
+	transform: scale(1.1);
+}
+#game-buttons {
+	width: 100%;
+	justify-content: space-between;
+}
