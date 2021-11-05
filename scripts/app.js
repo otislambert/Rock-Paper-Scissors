@@ -2,8 +2,9 @@ const statusText = document.querySelector('#play-status-text');
 statusText.textContent = "Make your play"
 
 const compStatusText = document.querySelector('#comp-status-text');
+const compStatusDiv = document.querySelector('#comp-status');
 
-const winner = document.querySelector('#winner');
+const winnerDiv = document.querySelector('#winner');
 const winnerText = document.querySelector('#winner-status-text');
 
 const playStatus = Array.from(document.querySelectorAll('.plays'));
@@ -16,14 +17,20 @@ const playbtn = document.querySelector('#playbutton');
 
 selectionButton.forEach(selectionButton => selectionButton.addEventListener('click', plays))
 
-let userAnswer = "hi";
+let userAnswer = "";
 let computerAnswer = "";
+
+let userWins = 0;
+let computerWins = 0;
+let playCount = 0;
+
 const options = ["rock", "paper", "scissors"];
 
 function plays(e) {
 	setUserAnswer(e);
 	computerPlay();
-	setTimeout(playRound, 3000);
+	setTimeout(playRound, 2000);
+	setTimeout(reset, 7000);
 }
 
 function setUserAnswer(e) {
@@ -32,23 +39,28 @@ function setUserAnswer(e) {
 }
 
 function computerPlay() {
+	compStatusDiv.classList.remove('hidden');
 	let selector = Math.floor(Math.random() * 3);
 	answer = options[selector];
 	compStatusText.textContent = `The Computer chose ${answer}`;
+	computerAnswer = answer;
 	return answer;
 }
 
 function playRound() {
-	console.log(playStatus);
 	playStatus.forEach((Element) => {Element.classList.add('hidden')});
-	console.log(winner);
-	winner.classList.remove('hidden');
+	winnerDiv.classList.remove('hidden');
+	playCount += 1;
 	if (comparator(userAnswer) == computerAnswer) {
 		winnerText.textContent = "You Win!";
+		userWins += 1;
+		setTimeout(displayScore, 2000);
 		return true;
 	}
 	else if (comparator(computerAnswer) == userAnswer) {
 		winnerText.textContent = "The Computer Wins.";
+		computerWins += 1;
+		setTimeout(displayScore, 2000);
 		return false;
 	}
 	else {
@@ -67,6 +79,17 @@ function comparator(answer) {
 		return "paper";
 	} else {
 	}
+}
+
+function displayScore() {
+	winnerText.textContent = `The computer has ${computerWins}. You have ${userWins}.`
+}
+
+function reset() {
+	playStatus.forEach((Element) => {Element.classList.remove('hidden')});
+	compStatusDiv.classList.add('hidden');
+	winnerDiv.classList.add('hidden');
+	statusText.textContent = "Make your play."
 }
 
 // function game() {
