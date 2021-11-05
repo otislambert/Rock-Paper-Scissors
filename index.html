@@ -10,14 +10,25 @@
 		<h1>Rock Paper Scissors</h1>
 	</div>
 	<div class="container" id="game">
-		<div class="container" id="status">
-			<p id="status-text"></p>
+		<div class="container" id="status-messages">
+			<div class="container plays" id="play-status">
+				<p class ="status-text" id="play-status-text"></p>
+			</div>
+			<div class="container plays" id="comp-status">
+				<p class="status-text" id="comp-status-text"></p>
+			</div>
+			<div class="container hidden" id="winner">
+				<p class="status-text" id="winner-status-text"></p>
+			</div>
 		</div>
 		<div class="container" id="game-buttons">
 			<button id="rock" class="select">Rock</button>
 			<button id="paper" class="select">Paper</button>
 			<button id="scissors" class="select">Scissors</button>
 		</div>
+		<!-- <div class="container" id="playdiv">
+			<button id="playbutton">Play</button>
+		</div> -->
 	</div>
 <script src="scripts/app.js"></script>
 </body>

@@ -21,17 +21,25 @@ h1 {
 	gap: 20px;
 }
 
-#status {
+#status-messages {
+	gap: 20px;
+	flex-direction: row;
+	align-items: stretch;
+}
+
+#status-messages div {
 	border: 5px solid rebeccapurple;
 	border-radius: 10px;
 	padding: 20px;
 	width: 100%;
+	height: auto;
 }
 
-#status-text {
+.status-text {
 	font-size: 50px;
 	color: rebeccapurple;
 	font-family: Helvetica, Arial, sans-serif;
+	text-align: center;
 }
 
 #game-buttons button {
@@ -51,4 +59,8 @@ h1 {
 #game-buttons {
 	width: 100%;
 	justify-content: space-between;
+}
+
+.hidden {
+	display: none;
 }
