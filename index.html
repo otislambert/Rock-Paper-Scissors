@@ -2,31 +2,41 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="styles/style.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styling.css">
 	<title>Rock Paper Scissors</title>
 </head>
 <body>
-	<div class="container" id="head">
+	<header>
 		<h1>Rock Paper Scissors</h1>
+	</header>
+	<div id="score">
+		<p class="scoreText" id="playsLeft"></p>
+		<p class="scoreText" id="userScore"></p>
+		<p class="scoreText" id="compScore"></p>
 	</div>
-	<div class="container" id="game">
-		<div class="container" id="status-messages">
-			<div class="container plays" id="play-status">
-				<p class ="status-text" id="play-status-text"></p>
-			</div>
-			<div class="container plays hidden" id="comp-status">
-				<p class="status-text" id="comp-status-text"></p>
-			</div>
-			<div class="container hidden" id="winner">
-				<p class="status-text" id="winner-status-text"></p>
-			</div>
+	<div id="winnerDeclaration">
+		<h3 id="winnerText"></h3>
+	</div>
+	<div class="container" id="selections">
+		<div class="container" id="userSelection">
+			<button class="selectionButton" id="rock">Rock</button>
+			<button class="selectionButton" id="paper">Paper</button>
+			<button class="selectionButton" id="scissors">Scissors</button>
+			<p id="userSelectionText"></p>
 		</div>
-		<div class="container" id="game-buttons">
-			<button id="rock" class="select">Rock</button>
-			<button id="paper" class="select">Paper</button>
-			<button id="scissors" class="select">Scissors</button>
+		<div class="container" id="compSelection">
+			<div class="imgDiv" id="compImageDiv">
+				<img src="Icons/questionMark.png" alt="Computer Selection" id="compImage">
+			</div>
+			<p id="compSelectionText"></p>
 		</div>
 	</div>
-<script src="scripts/app.js"></script>
+	<div id="winnerDisplay">
+		<p id="winnerDisplayText"></p>
+	</div>
+
+	<script src="script.js"></script>
 </body>
 </html>
