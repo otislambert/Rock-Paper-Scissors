@@ -1,5 +1,5 @@
 body {
-	background-color: blanchedalmond;
+	background-color: #000000;
 }
 
 .container {
@@ -10,45 +10,59 @@ body {
 
 h1 {
 	font-family: Helvetica, Arial, sans-serif;
-	color: darkolivegreen;
+	color: #568EA3;
 	font-size: 70px;
 }
 
 #game {
 	margin: 10px auto;
-	width: 30vw;
+	width: 50vw;
 	flex-direction: column;
 	gap: 20px;
 }
 
-#status {
-	border: 5px solid rebeccapurple;
+#status-messages {
+	width: 100%;
+	gap: 20px;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: space-between;
+}
+
+#status-messages div {
+	border: 5px solid #9A031E;
 	border-radius: 10px;
 	padding: 20px;
 	width: 100%;
+	height: auto;
 }
 
-#status-text {
+.status-text {
 	font-size: 50px;
-	color: rebeccapurple;
+	color: #9A031E;
 	font-family: Helvetica, Arial, sans-serif;
+	text-align: center;
 }
 
 #game-buttons button {
-	background-color: white;
-	color: darkolivegreen;
-	border: 2px solid darkolivegreen;
+	background-color: black;
+	color: #568EA3;
+	border: 2px solid #568EA3;
 	border-radius: 5px;
 	font-size: 30px;
 	transition: .3s;
 }
 
 #game-buttons button:hover {
-	border-color: red;
-	color: red;
+	border-color: #9A031E;
+	color: #9A031E;
 	transform: scale(1.1);
 }
 #game-buttons {
 	width: 100%;
 	justify-content: space-between;
+}
+
+.hidden {
+	display: none;
 }
